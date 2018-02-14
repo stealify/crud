@@ -1,6 +1,6 @@
 const assert = require('assert');
 const Proto = require('uberproto');
-const { hooks } = require('@feathersjs/commons');
+const { hooks } = require('@stealify/crud-commons');
 const feathers = require('../lib');
 
 describe('Feathers application', () => {
@@ -88,19 +88,19 @@ describe('Feathers application', () => {
       try {
         app.use('/', {});
       } catch (e) {
-        assert.equal(e.message, `'/' is not a valid service path.`);
+        assert.equal(e.message, '\'/\' is not a valid service path.');
       }
 
       try {
         app.use('', {});
       } catch (e) {
-        assert.equal(e.message, `'' is not a valid service path.`);
+        assert.equal(e.message, '\'\' is not a valid service path.');
       }
 
       try {
         app.use({}, {});
       } catch (e) {
-        assert.equal(e.message, `'[object Object]' is not a valid service path.`);
+        assert.equal(e.message, '\'[object Object]\' is not a valid service path.');
       }
     });
 
