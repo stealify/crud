@@ -1,16 +1,19 @@
 {
-  "name": "@feathersjs/feathers",
+  "name": "@stealify/crud",
   "description": "A REST and realtime API layer for modern applications.",
-  "version": "3.0.2",
+  "version": "0.0.2",
   "homepage": "http://feathersjs.com",
   "repository": {
     "type": "git",
-    "url": "git://github.com/feathersjs/feathers.git"
+    "url": "git://github.com/stealify/crud.git"
   },
   "keywords": [
-    "feathers",
+    "framework",
+    "stealify",
+    "websocket",
+    "http2",
+    "API",
     "REST",
-    "socket.io",
     "realtime"
   ],
   "main": "lib/index.js",
@@ -21,7 +24,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/feathersjs/feathers/issues"
+    "url": "https://github.com/stealify/crud/issues"
   },
   "directories": {
     "lib": "lib"
