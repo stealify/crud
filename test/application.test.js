@@ -1,15 +1,15 @@
 const assert = require('assert');
 const Proto = require('uberproto');
 const { hooks } = require('@stealify/crud-commons');
-const feathers = require('../lib');
+const crud = require('../lib');
 
-describe('Feathers application', () => {
+describe('@Stealify/crud application', () => {
   it('adds an ES module `default` export', () => {
-    assert.equal(feathers, feathers.default);
+    assert.equal(crud, crud.default);
   });
 
   it('initializes', () => {
-    const app = feathers();
+    const app = crud();
 
     assert.equal(typeof app.use, 'function');
     assert.equal(typeof app.service, 'function');
@@ -18,18 +18,18 @@ describe('Feathers application', () => {
 
   it('sets the version on main and app instance', () => {
     const pkg = require('../package.json');
-    const app = feathers();
+    const app = crud();
 
-    assert.equal(feathers.version, pkg.version);
+    assert.equal(crud.version, pkg.version);
     assert.equal(app.version, pkg.version);
   });
 
   it('sets SKIP on main', () => {
-    assert.equal(feathers.SKIP, hooks.SKIP);
+    assert.equal(crud.SKIP, hooks.SKIP);
   });
 
   it('is an event emitter', done => {
-    const app = feathers();
+    const app = crud();
     const original = { hello: 'world' };
 
     app.on('test', data => {
@@ -41,7 +41,7 @@ describe('Feathers application', () => {
   });
 
   it('throws an error for old app.service(path, service)', () => {
-    const app = feathers();
+    const app = crud();
 
     try {
       app.service('/test', {});
@@ -51,7 +51,7 @@ describe('Feathers application', () => {
   });
 
   it('uses .defaultService if available', () => {
-    const app = feathers();
+    const app = crud();
 
     assert.ok(!app.service('/todos/'));
 
@@ -75,7 +75,7 @@ describe('Feathers application', () => {
   });
 
   it('additionally passes `app` as .configure parameter (#558)', done => {
-    feathers().configure(function (app) {
+    crud().configure(function (app) {
       assert.equal(this, app);
       done();
     });
@@ -83,7 +83,7 @@ describe('Feathers application', () => {
 
   describe('Services', () => {
     it('calling .use with invalid path throws', () => {
-      const app = feathers();
+      const app = crud();
 
       try {
         app.use('/', {});
@@ -105,7 +105,7 @@ describe('Feathers application', () => {
     });
 
     it('calling .use with a non service object throws', () => {
-      const app = feathers();
+      const app = crud();
 
       try {
         app.use('/bla', function () {});
@@ -126,7 +126,7 @@ describe('Feathers application', () => {
         }
       };
 
-      const app = feathers().use('/dummy', dummyService);
+      const app = crud().use('/dummy', dummyService);
       const wrappedService = app.service('dummy');
 
       assert.ok(Proto.isPrototypeOf(wrappedService), 'Service got wrapped as Uberproto object');
@@ -137,8 +137,8 @@ describe('Feathers application', () => {
     });
 
     it('services can be re-used (#566)', done => {
-      const app1 = feathers();
-      const app2 = feathers();
+      const app1 = crud();
+      const app2 = crud();
 
       app2.use('/dummy', {
         create (data) {
@@ -174,30 +174,30 @@ describe('Feathers application', () => {
   describe('Express app options compatibility', function () {
     describe('.set()', () => {
       it('should set a value', () => {
-        var app = feathers();
+        var app = crud();
         app.set('foo', 'bar');
         assert.equal(app.get('foo'), 'bar');
       });
 
       it('should return the app', () => {
-        var app = feathers();
+        var app = crud();
         assert.equal(app.set('foo', 'bar'), app);
       });
 
       it('should return the app when undefined', () => {
-        var app = feathers();
+        var app = crud();
         assert.equal(app.set('foo', undefined), app);
       });
     });
 
     describe('.get()', () => {
       it('should return undefined when unset', () => {
-        var app = feathers();
+        var app = crud();
         assert.strictEqual(app.get('foo'), undefined);
       });
 
       it('should otherwise return the value', () => {
-        var app = feathers();
+        var app = crud();
         app.set('foo', 'bar');
         assert.equal(app.get('foo'), 'bar');
       });
@@ -205,7 +205,7 @@ describe('Feathers application', () => {
 
     describe('.enable()', () => {
       it('should set the value to true', () => {
-        var app = feathers();
+        var app = crud();
         assert.equal(app.enable('tobi'), app);
         assert.strictEqual(app.get('tobi'), true);
       });
@@ -213,7 +213,7 @@ describe('Feathers application', () => {
 
     describe('.disable()', () => {
       it('should set the value to false', () => {
-        var app = feathers();
+        var app = crud();
         assert.equal(app.disable('tobi'), app);
         assert.strictEqual(app.get('tobi'), false);
       });
@@ -221,12 +221,12 @@ describe('Feathers application', () => {
 
     describe('.enabled()', () => {
       it('should default to false', () => {
-        var app = feathers();
+        var app = crud();
         assert.strictEqual(app.enabled('foo'), false);
       });
 
       it('should return true when set', () => {
-        var app = feathers();
+        var app = crud();
         app.set('foo', 'bar');
         assert.strictEqual(app.enabled('foo'), true);
       });
@@ -234,12 +234,12 @@ describe('Feathers application', () => {
 
     describe('.disabled()', () => {
       it('should default to true', () => {
-        var app = feathers();
+        var app = crud();
         assert.strictEqual(app.disabled('foo'), true);
       });
 
       it('should return false when set', () => {
-        var app = feathers();
+        var app = crud();
         app.set('foo', 'bar');
         assert.strictEqual(app.disabled('foo'), false);
       });
@@ -248,7 +248,7 @@ describe('Feathers application', () => {
 
   describe('.setup', () => {
     it('app.setup calls .setup on all services', () => {
-      const app = feathers();
+      const app = crud();
       let setupCount = 0;
 
       app.use('/dummy', {
@@ -280,7 +280,7 @@ describe('Feathers application', () => {
     });
 
     it('registering a service after app.setup will be set up', () => {
-      const app = feathers();
+      const app = crud();
 
       app.setup();
 
@@ -294,7 +294,7 @@ describe('Feathers application', () => {
     });
 
     it('calls _setup on a service right away', () => {
-      const app = feathers();
+      const app = crud();
       let _setup = false;
 
       app.use('/dummy', {
@@ -312,7 +312,7 @@ describe('Feathers application', () => {
 
   describe('providers', () => {
     it('are getting called with a service', () => {
-      const app = feathers();
+      const app = crud();
       let providerRan = false;
 
       app.providers.push(function (service, location, options) {
@@ -333,7 +333,7 @@ describe('Feathers application', () => {
     });
 
     it('are getting called with a service and options', () => {
-      const app = feathers();
+      const app = crud();
       const opts = { test: true };
 
       let providerRan = false;
@@ -358,8 +358,8 @@ describe('Feathers application', () => {
 
   describe('sub apps', () => {
     it('re-registers sub-app services with prefix', done => {
-      const app = feathers();
-      const subApp = feathers();
+      const app = crud();
+      const subApp = crud();
 
       subApp.use('/service1', {
         get (id) {
