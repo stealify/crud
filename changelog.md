@@ -1,5 +1,53 @@
 # Change Log
 
+## [v3.1.2](https://github.com/feathersjs/feathers/tree/v3.1.2) (2018-02-10)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.1.1...v3.1.2)
+
+**Merged pull requests:**
+
+- Handle errors in error hooks properly [\#819](https://github.com/feathersjs/feathers/pull/819) ([daffl](https://github.com/daffl))
+
+## [v3.1.1](https://github.com/feathersjs/feathers/tree/v3.1.1) (2018-02-08)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.1.0...v3.1.1)
+
+**Merged pull requests:**
+
+- Turn argument validation into the first hook [\#818](https://github.com/feathersjs/feathers/pull/818) ([daffl](https://github.com/daffl))
+- Add Russian Telegram community [\#814](https://github.com/feathersjs/feathers/pull/814) ([vodniciarv](https://github.com/vodniciarv))
+
+## [v3.1.0](https://github.com/feathersjs/feathers/tree/v3.1.0) (2018-01-26)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.0.5...v3.1.0)
+
+**Merged pull requests:**
+
+- Update mocha to the latest version 🚀 [\#793](https://github.com/feathersjs/feathers/pull/793) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Add ability to skip all following hooks [\#792](https://github.com/feathersjs/feathers/pull/792) ([sylvainlap](https://github.com/sylvainlap))
+
+## [v3.0.5](https://github.com/feathersjs/feathers/tree/v3.0.5) (2018-01-04)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v2.2.4...v3.0.5)
+
+**Merged pull requests:**
+
+- Add backers & sponsors from Open Collective [\#504](https://github.com/feathersjs/feathers/pull/504) ([piamancini](https://github.com/piamancini))
+
+## [v2.2.4](https://github.com/feathersjs/feathers/tree/v2.2.4) (2018-01-04)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.0.4...v2.2.4)
+
+## [v3.0.4](https://github.com/feathersjs/feathers/tree/v3.0.4) (2018-01-03)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.0.3...v3.0.4)
+
+**Merged pull requests:**
+
+- Update Readme to correspond with latest release [\#772](https://github.com/feathersjs/feathers/pull/772) ([daffl](https://github.com/daffl))
+
+## [v3.0.3](https://github.com/feathersjs/feathers/tree/v3.0.3) (2018-01-02)
+[Full Changelog](https://github.com/feathersjs/feathers/compare/v3.0.2...v3.0.3)
+
+**Merged pull requests:**
+
+- Properly resolve the promise in error hooks if returnHook is set. [\#769](https://github.com/feathersjs/feathers/pull/769) ([daffl](https://github.com/daffl))
+- Update semistandard to the latest version 🚀 [\#768](https://github.com/feathersjs/feathers/pull/768) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v3.0.2](https://github.com/feathersjs/feathers/tree/v3.0.2) (2017-12-05)
 [Full Changelog](https://github.com/feathersjs/feathers/compare/v3.0.1...v3.0.2)
 
